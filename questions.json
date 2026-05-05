@@ -1,0 +1,132 @@
+[
+  {
+    "id": 1,
+    "type": "simulation",
+    "category": "Data Cleaning",
+    "difficulty": "Intermediate",
+    "scenario": "Your CRM exported a list of 500 client names as 'First Last' in column A. You typed 'first.last@company.com' for the first person in column B. You want Excel to recognize this pattern and do the rest automatically.",
+    "task": "Type the keyboard shortcut that activates 'Flash Fill' to complete the list.",
+    "expectedInput": "Ctrl + E",
+    "explanation": "Ctrl + E triggers Flash Fill. It detects patterns in your manual data entry and automatically fills the remaining cells down the column based on that pattern. It is a massive time-saver for data formatting."
+  },
+  {
+    "id": 2,
+    "type": "multiple-choice",
+    "category": "Financial Modeling",
+    "difficulty": "Intermediate",
+    "scenario": "You have finalized the Q4 budget. The totals are currently calculated using complex formulas, but you need to 'hardcode' these numbers before sending the file to department heads so they don't accidentally break the sheet.",
+    "question": "After copying the cells (Ctrl + C), which keyboard shortcut opens the 'Paste Special' menu so you can paste them as values?",
+    "options": [
+      "Ctrl + V",
+      "Ctrl + Shift + V",
+      "Ctrl + Alt + V",
+      "Alt + P"
+    ],
+    "answer": "Ctrl + Alt + V",
+    "explanation": "Ctrl + Alt + V opens the Paste Special dialog box. From there, you can press 'V' for Values and hit Enter to strip away the formulas and leave only the static numbers."
+  },
+  {
+    "id": 3,
+    "type": "multiple-choice",
+    "category": "Formulas",
+    "difficulty": "Beginner",
+    "scenario": "You are applying a standard 8% sales tax (located in cell $J$1) to a column of 200 product prices. When you drag your formula down the column, you need the reference to J1 to stay locked in place.",
+    "question": "Which key toggles absolute cell references (adding the $ signs) while typing a formula?",
+    "options": [
+      "F2",
+      "F4",
+      "F9",
+      "Alt + 4"
+    ],
+    "answer": "F4",
+    "explanation": "Pressing F4 while your cursor is on a cell reference in the formula bar cycles through absolute ($J$1), mixed (J$1 or $J1), and relative (J1) references."
+  },
+  {
+    "id": 4,
+    "type": "simulation",
+    "category": "Data Navigation",
+    "difficulty": "Beginner",
+    "scenario": "You are looking at a contiguous data set of 10,000 rows of inventory data. Your active cell is A1.",
+    "task": "Type the keyboard shortcut that will instantly select the entire region of data (the whole table) without needing to drag your mouse.",
+    "expectedInput": "Ctrl + A",
+    "explanation": "When your cursor is inside a contiguous block of data, Ctrl + A selects the 'Current Region'. This allows you to grab entire data sets instantly."
+  },
+  {
+    "id": 5,
+    "type": "multiple-choice",
+    "category": "Data Analysis",
+    "difficulty": "Intermediate",
+    "scenario": "You have a list of duplicate vendor invoices and need to quickly highlight which invoice numbers appear more than once so you can investigate them visually.",
+    "question": "Which Excel feature is best suited to instantly highlight duplicate values in a column with a color?",
+    "options": [
+      "Data Validation",
+      "Conditional Formatting",
+      "Format Painter",
+      "Remove Duplicates"
+    ],
+    "answer": "Conditional Formatting",
+    "explanation": "Under Home > Conditional Formatting > Highlight Cells Rules, there is a built-in 'Duplicate Values' rule. This is safer than 'Remove Duplicates' when you need to audit the data first."
+  },
+  {
+    "id": 6,
+    "type": "simulation",
+    "category": "Data Entry",
+    "difficulty": "Beginner",
+    "scenario": "You are filling out a daily time-tracking log and need to input today's date into the active cell.",
+    "task": "Type the keyboard shortcut that instantly inserts the current date into a cell.",
+    "expectedInput": "Ctrl + ;",
+    "explanation": "Ctrl + ; (semicolon) inserts the current static date. If you needed the current time, you would use Ctrl + Shift + : (colon)."
+  },
+  {
+    "id": 7,
+    "type": "multiple-choice",
+    "category": "Formatting",
+    "difficulty": "Beginner",
+    "scenario": "You are typing a long description for a project status update inside cell B2, but you want to force a line break to start a new paragraph within the exact same cell.",
+    "question": "Which keyboard shortcut creates a manual line break inside a single cell?",
+    "options": [
+      "Enter",
+      "Shift + Enter",
+      "Alt + Enter",
+      "Ctrl + Enter"
+    ],
+    "answer": "Alt + Enter",
+    "explanation": "Alt + Enter forces a carriage return (line break) inside a single cell, allowing you to format text into multiple paragraphs without moving to the cell below."
+  },
+  {
+    "id": 8,
+    "type": "simulation",
+    "category": "Formulas",
+    "difficulty": "Intermediate",
+    "scenario": "You have a column of 50 monthly expenses. You click on the empty cell directly at the bottom of this column and want to quickly sum them all up.",
+    "task": "Type the keyboard shortcut that automatically inserts the SUM function for the adjacent cells.",
+    "expectedInput": "Alt + =",
+    "explanation": "Alt + = triggers the AutoSum feature. Excel automatically detects the contiguous numbers above (or to the left) and writes the =SUM() formula for you."
+  },
+  {
+    "id": 9,
+    "type": "multiple-choice",
+    "category": "Lookup Functions",
+    "difficulty": "Advanced",
+    "scenario": "You are updating a master inventory file. You need to look up a Part Number, but the Part Number column is to the *left* of the primary lookup array in your source data table.",
+    "question": "Why is XLOOKUP superior to VLOOKUP in this specific scenario?",
+    "options": [
+      "XLOOKUP calculates faster on large datasets.",
+      "XLOOKUP can return data to the left of the lookup array.",
+      "XLOOKUP automatically formats the result as a table.",
+      "VLOOKUP cannot handle text strings."
+    ],
+    "answer": "XLOOKUP can return data to the left of the lookup array.",
+    "explanation": "VLOOKUP strictly searches the first (left-most) column of a table and returns data to the right. XLOOKUP uses decoupled lookup and return arrays, meaning it can pull data from any direction."
+  },
+  {
+    "id": 10,
+    "type": "simulation",
+    "category": "Data Organization",
+    "difficulty": "Intermediate",
+    "scenario": "You just imported raw CSV data into a blank worksheet. You want to convert this data range into an official 'Excel Table' so that it automatically gets filter dropdowns, banded rows, and dynamic ranges.",
+    "task": "Type the keyboard shortcut used to instantly format the selected data range as a Table.",
+    "expectedInput": "Ctrl + T",
+    "explanation": "Ctrl + T (or Ctrl + L) converts a standard data range into an official Excel Table, unlocking powerful features like structural references, auto-expanding ranges, and instant formatting."
+  }
+]

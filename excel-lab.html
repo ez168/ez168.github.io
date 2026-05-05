@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Shortcut Lab | Emiliano Zamudio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="excel-ribbon">
+        <div class="ribbon-top-bar" style="justify-content: space-between;">
+            <a href="index.html" class="back-link" style="text-decoration: none; color: white; background-color: #107C41; padding: 5px 12px; border-radius: 4px; font-weight: 600;">
+                ← Back to Portfolio
+            </a>
+            
+            <span style="font-weight: 800; font-size: 1.1rem; color: #107C41; letter-spacing: 0.5px; text-transform: uppercase;">
+                Excel Shortcut Lab
+            </span>
+            
+            <button id="dark-mode-toggle" class="mode-btn" style="margin-left: 0;">🌙 Tone Down</button>
+        </div>
+    </header>
+
+    <main class="app-container">
+        
+        <div class="formula-bar-container" style="display: flex; align-items: center; background: white; padding: 5px 20px; border-bottom: 1px solid #d0d0d0; font-size: 0.9rem;">
+            <div style="width: 100px; text-align: center; font-weight: bold; border-right: 1px solid #d0d0d0; padding-right: 10px; color: #666;">A1</div>
+            <div style="padding-left: 10px; color: #107C41; font-weight: 600; font-family: monospace; font-size: 1rem;">
+                =IF(SKILL="Excel", "HIRE", "KEEP SEARCHING")
+            </div>
+        </div>
+
+        <div class="excel-grid-simulator">
+            
+            <aside class="row-headers">
+                <div class="stat-cell header-stat">Stats</div>
+                <div class="stat-cell" title="Your highest streak across all sessions">
+                    H-Streak: &nbsp;<span id="highest-streak" style="font-weight: 700; color: #107C41;">0</span>
+                </div>
+                <div class="stat-cell" title="Your current correct answer streak">
+                    C-Streak: &nbsp;<span id="streak-counter" style="font-weight: 700; color: #107C41;">0</span> 🔥
+                </div>
+                <div class="stat-cell" title="Question Difficulty">
+                    Level: &nbsp;<span id="difficulty-level" style="font-weight: 600;">--</span>
+                </div>
+                <div class="stat-cell progress-container" style="flex-grow: 1; align-items: flex-end; padding: 0;">
+                    <div id="progress-fill"></div>
+                </div>
+            </aside>
+
+            <section class="worksheet-area">
+                <div class="col-headers">
+                    <div class="col-header active-col">B: Scenario Analysis</div>
+                    <div class="col-header">C: User Input</div>
+                </div>
+                
+                <div class="worksheet-cells">
+                    <div id="quiz-content">
+                        <p style="color: #666; font-style: italic;">Loading dataset...</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="feedback-overlay" class="hidden">
+            <div id="feedback-content">
+                <h3 id="feedback-title" style="margin-top: 0;"></h3>
+                <p id="feedback-explanation" style="line-height: 1.6;"></p>
+                <button id="next-btn" onclick="nextQuestion()" class="excel-btn green-btn">Calculate Next Row ➡️</button>
+            </div>
+        </div>
+
+        <div id="summary-modal" class="modal hidden">
+            <div class="modal-content">
+                <h2 style="color: #107C41; margin-top: 0;">🎉 Analysis Complete</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">
+                    Excellent work! You mastered Excel shortcuts with a highest streak of <strong id="final-streak" style="font-size: 1.3rem; color: #107C41;">0</strong>!
+                </p>
+                <button onclick="restartQuiz()" class="excel-btn green-btn" style="margin-bottom: 20px;">Re-Run Analysis 🔄</button>
+                
+                <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #e2e8f0;">
+                    <p class="study-links" style="font-size: 0.9rem; color: #666;">
+                        Keep leveling up your skills:<br>
+                        <a href="https://support.microsoft.com/en-us/office/keyboard-shortcuts-in-excel-1798d9d5-842a-42b8-9c99-9b7213f0040f" target="_blank" style="color: #107C41; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 8px;">
+                            📖 Official Microsoft Shortcut Guide
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,434 @@
+/* ==========================================================================
+   CSS Variables (Theming System)
+   ========================================================================== */
+:root {
+    /* Main Brand Colors - Excel Theme */
+    --excel-green: #107C41;
+    --excel-green-dark: #0b5c30;
+    --excel-green-light: #e6f4ea;
+    
+    /* Light Mode Colors (Default) */
+    --bg-color: #f3f4f6; /* Outer canvas */
+    --cell-bg: #ffffff; /* Inside the grid */
+    --text-main: #333333;
+    --text-muted: #666666;
+    --border-color: #d0d0d0;
+    --header-bg: #f8f9fa; /* Row/Col header background */
+    --header-active: #e1dfdd;
+    
+    /* Feedback Colors */
+    --correct-bg: #e6f4ea;
+    --correct-border: #137333;
+    --correct-text: #137333;
+    --wrong-bg: #fce8e6;
+    --wrong-border: #c5221f;
+    --wrong-text: #c5221f;
+
+    /* Shadows & Layout */
+    --card-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    --transition: all 0.2s ease-in-out;
+}
+
+/* Dark Mode Color Overrides */
+body.dark-mode {
+    --bg-color: #121212;
+    --cell-bg: #1e1e1e;
+    --text-main: #e0e0e0;
+    --text-muted: #a0a0a0;
+    --border-color: #333333;
+    --header-bg: #252525;
+    --header-active: #3a3a3a;
+    
+    /* Muted feedback colors for dark mode */
+    --correct-bg: #0d2214;
+    --correct-text: #4cc875;
+    --wrong-bg: #2a1111;
+    --wrong-text: #ff6b6b;
+    --card-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+/* ==========================================================================
+   Base Reset & Typography
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ==========================================================================
+   Excel Ribbon & Header
+   ========================================================================== */
+.excel-ribbon {
+    background-color: var(--cell-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 8px 20px;
+    transition: background-color 0.3s ease;
+}
+
+.ribbon-top-bar {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    font-size: 0.9rem;
+    overflow-x: auto; /* Allows scrolling on tiny screens */
+    white-space: nowrap;
+}
+
+.ribbon-top-bar span {
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.ribbon-top-bar span:hover {
+    background-color: var(--header-bg);
+}
+
+.ribbon-top-bar .active-tab {
+    background-color: var(--excel-green);
+    color: white;
+    font-weight: 600;
+}
+
+.back-link:hover {
+    background-color: var(--excel-green-dark) !important;
+}
+
+.mode-btn {
+    margin-left: auto;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.mode-btn:hover {
+    background-color: var(--header-bg);
+}
+
+/* Formula Bar Container */
+.formula-bar-container {
+    background-color: var(--cell-bg) !important;
+    border-bottom-color: var(--border-color) !important;
+    transition: background-color 0.3s ease;
+}
+
+/* ==========================================================================
+   Main Application Layout (The Grid)
+   ========================================================================== */
+.app-container {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.excel-grid-simulator {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    background-color: var(--cell-bg);
+    width: 100%;
+    max-width: 1000px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--card-shadow);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+}
+
+/* Row Headers (Left Side Stats) */
+.row-headers {
+    background-color: var(--header-bg);
+    border-right: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-cell {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-size: 0.85rem;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+.header-stat {
+    background-color: var(--header-active);
+    font-weight: bold;
+    color: var(--text-main);
+    justify-content: center;
+}
+
+/* Progress Bar inside Stats Column */
+.progress-container {
+    position: relative;
+    background-color: var(--cell-bg);
+    width: 100%;
+    height: 30px;
+    border-bottom: none;
+}
+
+#progress-fill {
+    height: 100%;
+    background-color: var(--excel-green);
+    width: 0%;
+    transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Column Headers (Top of Worksheet) */
+.col-headers {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Split for Scenario and User Input */
+    background-color: var(--header-bg);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.col-header {
+    padding: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--text-main);
+    border-right: 1px solid var(--border-color);
+}
+
+.col-header:last-child {
+    border-right: none;
+}
+
+.active-col {
+    border-bottom: 3px solid var(--excel-green);
+}
+
+/* ==========================================================================
+   Worksheet Interactive Elements
+   ========================================================================== */
+.worksheet-cells {
+    padding: 30px;
+}
+
+#quiz-content h3 {
+    color: var(--excel-green);
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+#quiz-content p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+/* Multiple Choice Buttons */
+.choice-btn {
+    display: block;
+    width: 100%;
+    background: var(--cell-bg);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 16px;
+    margin: 12px 0;
+    text-align: left;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition);
+}
+
+.choice-btn:hover {
+    background-color: var(--excel-green-light);
+    border-color: var(--excel-green);
+    color: #107C41; /* Keep it clearly green on hover even in dark mode */
+    transform: translateX(5px);
+}
+
+body.dark-mode .choice-btn:hover {
+    background-color: #163823; /* Dark green for dark mode hover */
+    color: #4cc875;
+}
+
+/* Simulation Input Area */
+.formula-bar-sim {
+    background-color: var(--header-bg);
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    margin-top: 15px;
+}
+
+.formula-bar-sim label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.excel-input {
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-size: 1.05rem;
+    background-color: var(--cell-bg);
+    color: var(--text-main);
+    margin-bottom: 15px;
+    font-family: monospace;
+    transition: var(--transition);
+}
+
+.excel-input:focus {
+    outline: none;
+    border-color: var(--excel-green);
+    box-shadow: 0 0 0 3px rgba(16, 124, 65, 0.2);
+}
+
+/* Global Buttons */
+.excel-btn {
+    padding: 12px 24px;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.green-btn {
+    background-color: var(--excel-green);
+    color: white;
+    width: 100%; /* Default to full width */
+}
+
+.green-btn:hover {
+    background-color: var(--excel-green-dark);
+    box-shadow: 0 4px 12px rgba(16, 124, 65, 0.3);
+}
+
+/* ==========================================================================
+   Feedback Overlay & Modals
+   ========================================================================== */
+#feedback-overlay {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 600px;
+    border-radius: 8px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    z-index: 50;
+    animation: slideUp 0.3s ease-out forwards;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translate(-50%, 20px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.correct-feedback {
+    background-color: var(--correct-bg);
+    border: 2px solid var(--correct-border);
+    color: var(--correct-text);
+}
+
+.wrong-feedback {
+    background-color: var(--wrong-bg);
+    border: 2px solid var(--wrong-border);
+    color: var(--wrong-text);
+}
+
+/* Full Screen Modals */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.modal-content {
+    background: var(--cell-bg);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border-color);
+}
+
+/* Hide Utility */
+.hidden {
+    display: none !important;
+}
+
+/* ==========================================================================
+   Responsive Design (Mobile Devices)
+   ========================================================================== */
+@media (max-width: 768px) {
+    .excel-grid-simulator {
+        grid-template-columns: 1fr; /* Stack layout on mobile */
+    }
+
+    .row-headers {
+        flex-direction: row; /* Stats go horizontal across the top */
+        border-right: none;
+        border-bottom: 1px solid var(--border-color);
+        overflow-x: auto; /* Scroll stats if they don't fit */
+        white-space: nowrap;
+    }
+
+    .stat-cell {
+        border-bottom: none;
+        border-right: 1px solid var(--border-color);
+        padding: 0 10px;
+        flex-shrink: 0;
+    }
+
+    .progress-container {
+        display: none; /* Hide progress bar on mobile to save space */
+    }
+
+    .col-headers {
+        grid-template-columns: 1fr; /* Single column */
+    }
+
+    .col-header:last-child {
+        display: none; /* Hide the second column header on mobile */
+    }
+
+    .worksheet-cells {
+        padding: 20px 15px;
+    }
+}
